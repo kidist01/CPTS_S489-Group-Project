@@ -14,3 +14,5 @@ nodemon
 npm i
 npm i nodemon 
 nodemon 
+
+runs on localhost:300
