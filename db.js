@@ -6,7 +6,7 @@ const sequelize = new Sequelize(
     {
         //dealing with sqlite do cmsdb1 crearte new cmsdb 
         dialect: 'sqlite',
-        storage: './database/donations.sqlite'
+        storage: './database/petstoredb.sqlite'
     }
 )
 
