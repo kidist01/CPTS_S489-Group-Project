@@ -1,0 +1,463 @@
+<style>
+.main-content{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.info-container{
+    width: 100%;
+}
+
+.recommended{
+    width: 100%;
+    text-align: center;
+}
+
+.productContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.productContainer .box{
+    width: 280px;
+    height: 290px;
+    overflow: hidden;
+    margin-top: 20px;
+    background: grey;
+    padding: 10px 20px;
+}
+
+.productContainer .box .content{
+    align-items: center;
+    max-width: 100%;
+}
+
+.productContainer .box .content .img-box img{
+width: 100px;
+height: 200px;
+}
+
+.productContainer .box .content .detail .info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-button {
+    margin-top: 30px;
+    padding: 10px 30px;
+    border: none;
+    background: #0cc0df;
+    color: white;
+    cursor: pointer;
+}
+
+#myCarousel .carousel-item .mask {
+    position: absolute;
+    top: 0;
+	left:0;
+	height:100%;
+    width: 100%;
+    background-attachment: fixed;
+}
+#myCarousel h4{
+	font-size:50px;
+	margin-bottom:15px;
+	color:#FFF;
+	line-height:100%;
+	letter-spacing:0.5px;
+	font-weight:600;
+}
+#myCarousel p{
+	font-size:18px;
+	margin-bottom:15px;
+	color:#d5d5d5;
+}
+#myCarousel .carousel-item a{background:#F47735; font-size:14px; color:#FFF; padding:13px 32px; display:inline-block; }
+#myCarousel .carousel-item a:hover{background:#394fa2; text-decoration:none;  }
+
+#myCarousel .carousel-item h4{-webkit-animation-name:fadeInLeft; animation-name:fadeInLeft;} 
+#myCarousel .carousel-item p{-webkit-animation-name:slideInRight; animation-name:slideInRight;} 
+#myCarousel .carousel-item a{-webkit-animation-name:fadeInUp; animation-name:fadeInUp;}
+#myCarousel .carousel-item .mask img{-webkit-animation-name:slideInRight; animation-name:slideInRight; display:block; height:auto; max-width:100%;}
+#myCarousel h4, #myCarousel p, #myCarousel a, #myCarousel .carousel-item .mask img{-webkit-animation-duration: 1s;
+    animation-duration: 1.2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+#myCarousel .container {max-width: 1430px;  }
+#myCarousel .carousel-item{height:100%; min-height:550px; }
+#myCarousel{position:relative; z-index:1; background:url(https://i.imgur.com/6axE29k.jpg) center center no-repeat; background-size:cover; }
+
+.carousel-control-next, .carousel-control-prev{height:40px; width:40px; padding:12px; top:90% !important; bottom:auto; transform:translateY(-50%); background-color: #f47735; }
+
+
+.carousel-item {
+    position: relative;
+    display: none;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    transition: -webkit-transform .6s ease;
+    transition: transform .6s ease;
+    transition: transform .6s ease,-webkit-transform .6s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+}
+.carousel-fade .carousel-item {
+	opacity: 0;
+	-webkit-transition-duration: .6s;
+	transition-duration: .6s;
+	-webkit-transition-property: opacity;
+	transition-property: opacity
+}
+.carousel-fade .carousel-item-next.carousel-item-left, .carousel-fade .carousel-item-prev.carousel-item-right, .carousel-fade .carousel-item.active {
+	opacity: 1
+}
+.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-right.active {
+	opacity: 0
+}
+.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-next, .carousel-fade .carousel-item-prev, .carousel-fade .carousel-item-prev.active, .carousel-fade .carousel-item.active {
+	-webkit-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0)
+}
+@supports (transform-style:preserve-3d) {
+	.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-next, .carousel-fade .carousel-item-prev, .carousel-fade .carousel-item-prev.active, .carousel-fade .carousel-item.active {
+	-webkit-transform:translate3d(0, 0, 0);
+	transform:translate3d(0, 0, 0)
+	}
+}
+.carousel-fade .carousel-item-left.active, .carousel-fade .carousel-item-next, .carousel-fade .carousel-item-prev, .carousel-fade .carousel-item-prev.active, .carousel-fade .carousel-item.active {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+
+ 
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+@-webkit-keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+}
+h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
+
+/********************* shopping Demo-1 **********************/
+.product-grid{font-family:Raleway,sans-serif;text-align:center;padding:0 0 72px;border:1px solid rgba(0,0,0,.1);overflow:hidden;position:relative;z-index:1}
+.product-grid .product-image{position:relative;transition:all .3s ease 0s}
+.product-grid .product-image a{display:block}
+.product-grid .product-image img{width:100%;height:auto}
+.product-grid .pic-1{opacity:1;transition:all .3s ease-out 0s}
+.product-grid:hover .pic-1{opacity:1}
+.product-grid .pic-2{opacity:0;position:absolute;top:0;left:0;transition:all .3s ease-out 0s}
+.product-grid:hover .pic-2{opacity:1}
+.product-grid .social{width:150px;padding:0;margin:0;list-style:none;opacity:0;transform:translateY(-50%) translateX(-50%);position:absolute;top:60%;left:50%;z-index:1;transition:all .3s ease 0s}
+.product-grid:hover .social{opacity:1;top:50%}
+.product-grid .social li{display:inline-block}
+.product-grid .social li a{color:#fff;background-color:#333;font-size:16px;line-height:40px;text-align:center;height:40px;width:40px;margin:0 2px;display:block;position:relative;transition:all .3s ease-in-out}
+.product-grid .social li a:hover{color:#fff;background-color:#ef5777}
+.product-grid .social li a:after,.product-grid .social li a:before{content:attr(data-tip);color:#fff;background-color:#000;font-size:12px;letter-spacing:1px;line-height:20px;padding:1px 5px;white-space:nowrap;opacity:0;transform:translateX(-50%);position:absolute;left:50%;top:-30px}
+.product-grid .social li a:after{content:'';height:15px;width:15px;border-radius:0;transform:translateX(-50%) rotate(45deg);top:-20px;z-index:-1}
+.product-grid .social li a:hover:after,.product-grid .social li a:hover:before{opacity:1}
+.product-grid .product-discount-label,.product-grid .product-new-label{color:#fff;background-color:#ef5777;font-size:12px;text-transform:uppercase;padding:2px 7px;display:block;position:absolute;top:10px;left:0}
+.product-grid .product-discount-label{background-color:#333;left:auto;right:0}
+.product-grid .rating{color:#FFD200;font-size:12px;padding:12px 0 0;margin:0;list-style:none;position:relative;z-index:-1}
+.product-grid .rating li.disable{color:rgba(0,0,0,.2)}
+.product-grid .product-content{background-color:#fff;text-align:center;padding:12px 0;margin:0 auto;position:absolute;left:0;right:0;bottom:-27px;z-index:1;transition:all .3s}
+.product-grid:hover .product-content{bottom:0}
+.product-grid .title{font-size:13px;font-weight:400;letter-spacing:.5px;text-transform:capitalize;margin:0 0 10px;transition:all .3s ease 0s}
+.product-grid .title a{color:#828282}
+.product-grid .title a:hover,.product-grid:hover .title a{color:#ef5777}
+.product-grid .price{color:#333;font-size:17px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.6px;margin-bottom:8px;text-align:center;transition:all .3s}
+.product-grid .price span{color:#999;font-size:13px;font-weight:400;text-decoration:line-through;margin-left:3px;display:inline-block}
+.product-grid .add-to-cart{color:#000;font-size:13px;font-weight:600}
+@media only screen and (max-width:990px){.product-grid{margin-bottom:30px}
+}
+</style>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
+
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="mask flex-center">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-7 col-12 order-md-1 order-2">
+              <h4>Present your <br>
+                awesome product</h4>
+              <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+              <a href="#">BUY NOW</a> </div>
+            <div class="col-md-5 col-12 order-md-2 order-1"><img src="/images/logo.png" class="mx-auto" alt="slide"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="mask flex-center">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-7 col-12 order-md-1 order-2">
+              <h4>Present your <br>
+                awesome product</h4>
+              <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+              <a href="#">BUY NOW</a> </div>
+            <div class="col-md-5 col-12 order-md-2 order-1"><img src="/images/logo.png" class="mx-auto" alt="slide"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="mask flex-center">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-7 col-12 order-md-1 order-2">
+              <h4>Present your <br>
+                awesome product</h4>
+              <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+              <a href="#">BUY NOW</a> </div>
+            <div class="col-md-5 col-12 order-md-2 order-1"><img src="/images/logo.png" class="mx-auto" alt="slide"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+<!--slide end--> 
+<br>
+
+<div class="container">
+    <h3 class="h3">Reccomended Products </h3>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="product-image">
+                    <a href="#">
+                        <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
+                        <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
+                    </a>
+                    <ul class="social">
+                        <li><a href="/contact-us" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                    <span class="product-new-label">Sale</span>
+                    <span class="product-discount-label">20%</span>
+                </div>
+                <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star disable"></li>
+                </ul>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">Women's Blouse</a></h3>
+                    <div class="price">$16.00
+                        <span>$20.00</span>
+                    </div>
+                    <a class="add-to-cart" href="">+ Add To Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="product-image">
+                    <a href="#">
+                        <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
+                        <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
+                    </a>
+                    <ul class="social">
+                        <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                    <span class="product-new-label">Sale</span>
+                    <span class="product-discount-label">50%</span>
+                </div>
+                <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                </ul>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">Men's Plain Tshirt</a></h3>
+                    <div class="price">$5.00
+                        <span>$10.00</span>
+                    </div>
+                    <a class="add-to-cart" href="">+ Add To Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="product-image">
+                    <a href="#">
+                        <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
+                        <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
+                    </a>
+                    <ul class="social">
+                        <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                    <span class="product-new-label">Sale</span>
+                    <span class="product-discount-label">50%</span>
+                </div>
+                <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                </ul>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">Men's Plain Tshirt</a></h3>
+                    <div class="price">$5.00
+                        <span>$10.00</span>
+                    </div>
+                    <a class="add-to-cart" href="">+ Add To Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="product-image">
+                    <a href="#">
+                        <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
+                        <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
+                    </a>
+                    <ul class="social">
+                        <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                    <span class="product-new-label">Sale</span>
+                    <span class="product-discount-label">50%</span>
+                </div>
+                <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                </ul>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">Men's Plain Tshirt</a></h3>
+                    <div class="price">$5.00
+                        <span>$10.00</span>
+                    </div>
+                    <a class="add-to-cart" href="">+ Add To Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
