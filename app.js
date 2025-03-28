@@ -16,6 +16,13 @@ var logger = require('morgan');
 const session = require('express-session');
 
 var indexRouter = require('./routes/index');
+var aboutRouter = require('./routes/about');
+var contactUsRouter = require('./routes/contact-us');
+var adoptionsRouter = require('./routes/adoptions');
+var productRouter = require('./routes/products');
+var cartRouter = require('./routes/cart');
+var adminRouter = require('./routes/admin');
+var userProfileRouter = require('./routes/user-profile');
 const sequelize = require('./db');
 const CategoryThroughs = require('./models/CategoryThrough.js');
 
@@ -40,6 +47,13 @@ app.use(session({
 }))
 
 app.use('/', indexRouter);
+app.use('/about', aboutRouter);
+app.use('/contact-us', contactUsRouter);
+app.use('/adoptions', adoptionsRouter);
+app.use('/products', productRouter);
+app.use('/cart', cartRouter);
+app.use('/admin', adminRouter);
+app.use('/user-profile', userProfileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

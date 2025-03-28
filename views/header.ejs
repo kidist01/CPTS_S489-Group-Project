@@ -53,6 +53,7 @@
   text-decoration: none;
   color: #fff;
   cursor: pointer;
+  width: 30%;
 }
 
 .item-number {
@@ -223,13 +224,13 @@
                 </div>
             </div>
             <div class="cart largenav col" style="display: flex; gap: 0; padding: 0;">
-                <a class="col cart-button" style="flex: none;">
+                <a href="./user-profile" class="col cart-button" style="flex: none; width: 120px">
                     <i class="fa-solid fa-user"></i>
                 </a>
-                <a class="col cart-button" style="flex: none;">
+                <a href="./admin" class="col cart-button" style="flex: none; width: 120px">
                     <i class="fa-solid fa-gear"></i>
                 </a>
-                <a class="col cart-button" style="flex: none;">
+                <a href="./cart" class="col cart-button" style="flex: none; width: 120px">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="item-number">0</span>
                 </a>
@@ -237,15 +238,17 @@
         </div>
     </div>
 </div>
-<div id="mySidenav" class="sidenav">
+<div id="mySidenav" class="sidenav" style="z-index: 100;">
     <div class="container" style="background-color: #2874f0; padding-top: 10px;">
         <span class="sidenav-heading">Home</span>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     </div>
-    <a href="">Home</a>
-    <a href="">Products</a>
-    <a href="">About</a>
-    <a href="">Adoptions</a>
+    <a href="/">Home</a>
+    <a href="/products">Products</a>
+    <a href="/about">About</a>
+    <a href="/adoptions">Adoptions</a>
+    <a href="/contact-us">Contact Us</a>
+    <a href="/facts">Facts</a>
 </div>
 
 <script>

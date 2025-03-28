@@ -4,7 +4,7 @@ const User = require('../models/User.js');
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  res.render('index', { content: './partials/login.ejs'});
+  res.render('index');
 });
 
 router.post('/home', async (req, res) => {
@@ -13,12 +13,8 @@ router.post('/home', async (req, res) => {
   const user = await User.findUser(req.body.username, req.body.password)
 
   console.log(user);
-
-  if(user != null){
-    res.render('index', { content: './partials/product-list.ejs'});
-  }else{
-    res.render('index', { content: './partials/login.ejs'});
-  }
+  res.render('index');
 });
+
 
 module.exports = router;
