@@ -23,6 +23,7 @@ var productRouter = require('./routes/products');
 var cartRouter = require('./routes/cart');
 var adminRouter = require('./routes/admin');
 var userProfileRouter = require('./routes/user-profile');
+var faqsRouter = require('./routes/faqs');
 const sequelize = require('./db');
 const CategoryThroughs = require('./models/CategoryThrough.js');
 
@@ -54,6 +55,7 @@ app.use('/products', productRouter);
 app.use('/cart', cartRouter);
 app.use('/admin', adminRouter);
 app.use('/user-profile', userProfileRouter);
+app.use('/faqs', faqsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
