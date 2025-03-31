@@ -2,6 +2,7 @@ const sequelize = require('../db');
 const {Model, DataTypes} = require('sequelize');
 const OrderItem = require('./OrderItem.js');
 const CartItem = require('./CartItem.js');
+const Category = require('./Category.js');
 
 class Product extends Model {
 
@@ -40,5 +41,8 @@ Product.init({
 
 OrderItem.belongsTo(Product, { foreignKey: 'productId' }); // Each OrderItem belongs to one Product
 Product.hasMany(OrderItem, { foreignKey: 'productId' });
+
+Category.belongsTo(Product, { foreignKey: 'productId' }); // Each OrderItem belongs to one Product
+Product.hasMany(Category, { foreignKey: 'productId' });
 
 module.exports = Product
