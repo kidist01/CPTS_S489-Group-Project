@@ -77,8 +77,29 @@ async function setup(params){
  
   //Create a Product with a Category
   const category1 = await Catergory.create({categoryId:1, categoryName: "Dog Food", description: "Dog Food"});
-  const product1 = await Product.create({productId:1, name: "Purina Dog Food", description: "Purina Dog Food For Medium Dogs", price: 59.99, stockNumber: 32, imageUrl: "purinaDogFood"});
+  const category2 = await Catergory.create({categoryId:2, categoryName: "Cat Food", description: "Cat Food"});
+  const category3 = await Catergory.create({categoryId:3, categoryName: "Fish Food", description: "Fish Food"});
+  const category4 = await Catergory.create({categoryId:4, categoryName: "Dog", description: "Dog"});
+  const category5 = await Catergory.create({categoryId:5, categoryName: "Cat", description: "Cat"});
+  const category6 = await Catergory.create({categoryId:6, categoryName: "Fish", description: "Fish"});
+
+  const product1 = await Product.create({productId:1, name: "Purina Dog Food", description: "Purina Dog Food For Medium Dogs", price: 59.99, stockNumber: 32, imageUrl: "PurinaDogFood"});
   const productThrough1 = await CategoryThroughs.create({id: 1, categoryId:1, productId: 1,});
+
+  const product2 = await Product.create({productId:2, name: "Purina Dog Food", description: "Purina Dog Food For Medium Dogs", price: 59.99, stockNumber: 32, imageUrl: "PurinaDogFood"});
+  const productThrough2 = await CategoryThroughs.create({id: 2, categoryId:1, productId: 2,});
+
+  const product3 = await Product.create({productId:3, name: "Purina Dog Food", description: "Purina Dog Food For Medium Dogs", price: 59.99, stockNumber: 32, imageUrl: "PurinaDogFood"});
+  const productThrough3 = await CategoryThroughs.create({id: 3, categoryId:1, productId: 3,});
+
+  const product4 = await Product.create({productId:4, name: "Purina Dog Food", description: "Purina Dog Food For Medium Dogs", price: 59.99, stockNumber: 32, imageUrl: "PurinaDogFood"});
+  const productThrough4 = await CategoryThroughs.create({id: 4, categoryId:1, productId: 4,});
+
+  const product5 = await Product.create({productId:5, name: "Purina Dog Food", description: "Purina Dog Food For Medium Dogs", price: 59.99, stockNumber: 32, imageUrl: "PurinaDogFood"});
+  const productThrough5 = await CategoryThroughs.create({id: 5, categoryId:1, productId: 5,});
+
+  const product6 = await Product.create({productId:6, name: "Purina Dog Food", description: "Purina Dog Food For Medium Dogs", price: 59.99, stockNumber: 32, imageUrl: "PurinaDogFood"});
+  const productThrough6 = await CategoryThroughs.create({id: 6, categoryId:1, productId: 6,});
 
   //Create a Cart for the first User
   const cart1 = await Cart.create({cartId: 1, userId:1});
