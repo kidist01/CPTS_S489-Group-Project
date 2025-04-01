@@ -10,6 +10,7 @@ CartItem.init({
     cartItemId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
         allowNull: false
     },
     cartId: {

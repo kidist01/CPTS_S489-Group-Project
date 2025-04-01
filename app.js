@@ -24,6 +24,7 @@ var cartRouter = require('./routes/cart');
 var adminRouter = require('./routes/admin');
 var userProfileRouter = require('./routes/user-profile');
 var faqsRouter = require('./routes/faqs');
+var loginRouter = require('./routes/login');
 const sequelize = require('./db');
 const CategoryThroughs = require('./models/CategoryThrough.js');
 
@@ -38,6 +39,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: 'CPTS489',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
+
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
@@ -56,6 +65,7 @@ app.use('/cart', cartRouter);
 app.use('/admin', adminRouter);
 app.use('/user-profile', userProfileRouter);
 app.use('/faqs', faqsRouter);
+app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
