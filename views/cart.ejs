@@ -10,6 +10,9 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/5a5b4e639f.js" crossorigin="anonymous"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <style>
 /* BASIC */
     </style>
@@ -22,7 +25,78 @@
 </header>
 
 <main>
-  <p>Here's the Cart</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-8" style="width: 100%">
+        <div class="panel panel-info">
+          <div class="panel-heading" style="background-color: #2469d9">
+            <div class="panel-title">
+              <div class="row" >
+                <div class="col-xs-6" style="color: white" >
+                  <h5 style="font-size: 1.3em; font-style: bold;">Cart</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
+              </div>
+              <div class="col-xs-4">
+                <h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
+              </div>
+              <div class="col-xs-6">
+                <div class="col-xs-6 text-right">
+                  <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+                </div>
+                <div class="col-xs-4">
+                  <input type="text" class="form-control input-sm" value="1">
+                </div>
+                <div class="col-xs-2">
+                  <button type="button" class="btn btn-link btn-xs">
+                    <span class="glyphicon glyphicon-trash"> </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
+              </div>
+              <div class="col-xs-4">
+                <h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
+              </div>
+              <div class="col-xs-6">
+                <div class="col-xs-6 text-right">
+                  <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+                </div>
+                <div class="col-xs-4">
+                  <input type="text" class="form-control input-sm" value="1">
+                </div>
+                <div class="col-xs-2">
+                  <button type="button" class="btn btn-link btn-xs">
+                    <span class="glyphicon glyphicon-trash"> </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <div class="row text-center">
+              <div class="col-xs-9">
+                <h4 class="text-right">Total <strong>$50.00</strong></h4>
+              </div>
+              <div class="col-xs-3">
+                <button type="button"  style="background-color: #ffe11b; color: black;" class="btn btn-success btn-block">
+                  Checkout
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 
 <footer>

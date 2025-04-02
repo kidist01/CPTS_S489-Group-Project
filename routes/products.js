@@ -2,15 +2,11 @@ var express = require('express');
 var router = express.Router();
 const User = require('../models/User.js');
 const Product = require('../models/Product.js');
-const Category = require('../models/Category.js');
-const CartItem = require('../models/CartItem.js');
-const Cart = require('../models/Cart.js');
-const session = require('express-session');
 
 /* GET home page. */
 router.get('/', async (req, res) => {
   let products = await Product.findAll({
-    include: [{model: Category}]
+    
   });;
 
   let cartSize = "5";

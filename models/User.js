@@ -72,17 +72,7 @@ User.init({
     modelName: 'User'
 })
 
-const CategoryThrough = sequelize.define('CategoryThrough', {
-    // Define attributes of the junction table if needed
-  }, {
-    timestamps: false // Optionally disable timestamps
-  });
-
-
 User.hasOne(Cart, { foreignKey: 'userId' }); // User has one Profile
 Cart.belongsTo(User, { foreignKey: 'userId' });
-
-User.belongsToMany(Order, { through: CategoryThrough });
-Order.belongsToMany(User, { through: CategoryThrough });
 
 module.exports = User

@@ -8,6 +8,6 @@ const sequelize = new Sequelize(
         dialect: 'sqlite',
         storage: './database/petstoredb.sqlite'
     }
-)
+);
 
 module.exports = sequelize
