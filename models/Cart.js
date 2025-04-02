@@ -1,27 +1,36 @@
 const sequelize = require('../db');
 const {Model, DataTypes} = require('sequelize');
-const CartItem = require('./CartItem.js');
 
 class Cart extends Model {
 
 }
 
 Cart.init({
-    cartId: {
+    userId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false
     },
-    userId: {
-        type: DataTypes.STRING,
+    productId: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
         allowNull: false
-    }
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1
+    },
 }, {
     sequelize,
     modelName: 'Cart'
+}, {
+    indexes: [
+        {unique: true,
+            fields: ['UserId', 'ProductId']
+        }
+    ]
 });
 
-Cart.hasMany(CartItem, { foreignKey: 'cartId' });
-CartItem.belongsTo(Cart, { foreignKey: 'cartId' });
 
 module.exports = Cart
