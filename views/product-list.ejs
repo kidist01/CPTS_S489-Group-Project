@@ -286,12 +286,14 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-7 col-12 order-md-1 order-2">
-              <h4>Present your <br>
-                awesome product</h4>
-              <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
-                necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
-              <a href="#">BUY NOW</a> </div>
-            <div class="col-md-5 col-12 order-md-2 order-1"><img src="/images/logo.png" class="mx-auto" alt="slide"></div>
+              <h4>20% OFF! <br>
+                Site Wide</h4>
+              <p>Enjoy our Grand Opening sale. We are proud to offer 20% off Site wide.</p>
+              <form action="/cart/buyNow" method="POST">
+                <input type="hidden" name="productId" value="4">
+                <a href="#">BUY NOW</a> </div>
+              </form>
+            <div class="col-md-5 col-12 order-md-2 order-1"><img src="/images/blueBuffaloHomestyleRecipe.jpeg" class="mx-auto" alt="slide"></div>
           </div>
         </div>
       </div>
@@ -301,12 +303,12 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-7 col-12 order-md-1 order-2">
-              <h4>Present your <br>
-                awesome product</h4>
-              <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
-                necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
-              <a href="#">BUY NOW</a> </div>
-            <div class="col-md-5 col-12 order-md-2 order-1"><img src="/images/logo.png" class="mx-auto" alt="slide"></div>
+              <h4>Bring Your Pets <br>
+                Take a Photo for our wall</h4>
+              <p>We enjoy pets of all sizes, <br>
+                We aim to be your Memorable Store</p>
+               </div>
+            <div class="col-md-5 col-12 order-md-2 order-1"><img src="/images/petPictureWall.jpeg" class="mx-auto" alt="slide"></div>
           </div>
         </div>
       </div>
@@ -316,11 +318,11 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-7 col-12 order-md-1 order-2">
-              <h4>Present your <br>
-                awesome product</h4>
-              <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
-                necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
-              <a href="#">BUY NOW</a> </div>
+              <h4>Give Us <br>
+                Your Opinion</h4>
+              <p>We love our cutomers and their pets <br>
+                Take a minute to let us know what you think!</p>
+              <a href="./contact-us">Contact Us</a> </div>
             <div class="col-md-5 col-12 order-md-2 order-1"><img src="/images/logo.png" class="mx-auto" alt="slide"></div>
           </div>
         </div>
@@ -332,132 +334,47 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 <br>
 
 <div class="container">
-    <h3 class="h3">Reccomended Products </h3>
-    <div class="row">
-        <div class="col-md-3 col-sm-6">
-            <div class="product-grid">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
-                        <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
-                    </a>
-                    <ul class="social">
+  <h3 class="h3">Recommended Products </h3>
+  <div class="row d-flex flex-wrap">
+    <% for(let product of products) {%>  
+      <div class="col-md-3 col-sm-6 d-inline-flex" style="margin-top: 10px;">
+          <div class="product-grid">
+              <div class="product-image">
+                  <a href="#">
+                      <img class="pic-1" src="/images/<%=product.imageUrl%>.jpeg" style="width: 250px; height: 350px;">
+                      <img class="pic-2" src="/images/<%=product.imageUrl%>2.jpeg" style="width: 250px; height: 350px;">
+                  </a>
+                  <ul class="social" style="display: flex;">
+                      <form action="/product-info" method="POST">
                         <li><a href="/contact-us" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">20%</span>
-                </div>
-                <ul class="rating">
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star disable"></li>
-                </ul>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Women's Blouse</a></h3>
-                    <div class="price">$16.00
-                        <span>$20.00</span>
-                    </div>
-                    <a class="add-to-cart" href="">+ Add To Cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-grid">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
-                        <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
-                    </a>
-                    <ul class="social">
-                        <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">50%</span>
-                </div>
-                <ul class="rating">
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                </ul>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Men's Plain Tshirt</a></h3>
-                    <div class="price">$5.00
-                        <span>$10.00</span>
-                    </div>
-                    <a class="add-to-cart" href="">+ Add To Cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-grid">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
-                        <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
-                    </a>
-                    <ul class="social">
-                        <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">50%</span>
-                </div>
-                <ul class="rating">
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                </ul>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Men's Plain Tshirt</a></h3>
-                    <div class="price">$5.00
-                        <span>$10.00</span>
-                    </div>
-                    <a class="add-to-cart" href="">+ Add To Cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-grid">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
-                        <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
-                    </a>
-                    <ul class="social">
-                        <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                    <span class="product-new-label">Sale</span>
-                    <span class="product-discount-label">50%</span>
-                </div>
-                <ul class="rating">
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                </ul>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">Men's Plain Tshirt</a></h3>
-                    <div class="price">$5.00
-                        <span>$10.00</span>
-                    </div>
-                    <a class="add-to-cart" href="">+ Add To Cart</a>
-                </div>
-            </div>
-        </div>
-    </div>
+                      </form>
+                      <form action="/contact-us" method="POST">
+                      <li><a href="" data-tip="Contact Us"><i class="fa-solid fa-clipboard-question"></i></a></li>
+                      </form>
+                      <form id="addToCartForm" action="/addtocart" method="POST">
+                      <input type="hidden" name="productId" value="<%=product.productId%>">
+                      <li><a href="#" onclick="document.getElementById('addToCartForm').submit();" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                      </form>
+                  </ul>
+                  <span class="product-new-label">Sale</span>
+                  <span class="product-discount-label">20%</span>
+              </div>
+              <ul class="rating">
+                  <li class="fa fa-star"></li>
+                  <li class="fa fa-star"></li>
+                  <li class="fa fa-star"></li>
+                  <li class="fa fa-star"></li>
+                  <li class="fa fa-star disable"></li>
+              </ul>
+              <div class="product-content">
+                  <h3 class="title"><a href="#"><%=product.name%></a></h3>
+                  <div class="price"><%=product.price%>
+                      <span><%=(product.price*1.20).toFixed(2)%></span>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <%  } %>
+  </div>
 </div>
 <hr>

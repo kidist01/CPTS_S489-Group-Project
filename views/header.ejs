@@ -232,7 +232,11 @@
                 </a>
                 <a href="./cart" class="col cart-button" style="flex: none; width: 120px">
                     <i class="fa-solid fa-cart-shopping"></i>
+                    <% if(locals.cartSize) {%> 
+                      <span class="item-number"><%= cartSize %></span>
+                    <%}%> <% if(!locals.cartSize) { %>
                     <span class="item-number">0</span>
+                    <% } %>
                 </a>
             </div>
         </div>
