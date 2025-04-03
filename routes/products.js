@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const User = require('../models/User.js');
 const Product = require('../models/Product.js');
+const Cart = require('../models/Cart.js');
+const session = require('express-session');
 
 /* GET home page. */
 router.get('/', async (req, res) => {
@@ -9,9 +11,18 @@ router.get('/', async (req, res) => {
     
   });;
 
-  let cartSize = "5";
+  let cartSize = 0;
 
-  res.render('products', { products , cartSize });
+  if(session.user){
+    cartItems = await Cart.findAll({
+      userId: session.user.userId
+    })
+
+    cartSize = cartItems.length;
+  }
+
+
+  res.render('products', { products, cartSize });
 });
 
 router.post('/addtocart', isLoggedIn ,  async (req, res) => {
@@ -21,30 +32,23 @@ router.post('/addtocart', isLoggedIn ,  async (req, res) => {
     productId: productId
   })
 
-  let cart = await Cart.findOne(
+  await Cart.create (
     {
+      productId: productId,
       userId: session.user.userId
     }
   );
 
-  let cartItem = new CartItem ({
-    cartId: cart.cartId,
-    productId: productId,
-    quantity: 1,
-    totalPrice: product.price
-  });
-
-  await CartItem.create(cartItem);
-
-  let products = await Product.findAll({
-    include: [{model: Category}]
-  });
-
-  let userCartItems = await CartItem.findAll({
-    cartId: cart.cartId
+  let cartItems = await Cart.findAll({
+    userId: session.user.userId
   })
 
-  let cartSize = userCartItems.length();
+  let cartSize = cartItems.length;
+
+  let products = await Product.findAll({
+  });
+
+  console.log(cartSize);
 
   res.render('products', { products, cartSize });
 });

@@ -6,14 +6,18 @@ class Cart extends Model {
 }
 
 Cart.init({
-    userId: {
+    cartId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+    },
+    userId: {
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     productId: {
         type: DataTypes.INTEGER,
-        primaryKey: true,
         allowNull: false
     },
     quantity: {
