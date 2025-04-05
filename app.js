@@ -22,6 +22,7 @@ var adminRouter = require('./routes/admin');
 var userProfileRouter = require('./routes/user-profile');
 var faqsRouter = require('./routes/faqs');
 var loginRouter = require('./routes/login');
+var signupRouter = require('./routes/signup');
 const sequelize = require('./db');
 
 var app = express();
@@ -62,6 +63,7 @@ app.use('/admin', adminRouter);
 app.use('/user-profile', userProfileRouter);
 app.use('/faqs', faqsRouter);
 app.use('/login', loginRouter);
+app.use('/signup', signupRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -91,7 +93,7 @@ async function setup(params){
   const product6 = await Product.create({productId:6, name: "Carhartt Dog Collar", description: "Dog Collar For Medium Dogs", price: 19.99, stockNumber: 10, imageUrl: "carharttDogCollar", category: "Dog"});
   const product7 = await Product.create({productId:7, name: "Applaws Cat Treats", description: "Applaws Cat Treat Puree", price: 19.99, stockNumber: 21, imageUrl: "applawsCatTreat", category: "Cat"});
   const product8 = await Product.create({productId:8, name: "Milk Bone Dog Treats", description: "Milk Bone Soft And Chewey Dog Treats", price: 15.99, stockNumber: 18, imageUrl: "milkBoneSoftChewey", category: "Dog"});
-
+  
   //Create a Cart for the first User
   const cart1 = await Cart.create({productId: 1, userId:1});
 
