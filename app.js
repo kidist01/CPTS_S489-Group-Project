@@ -22,6 +22,7 @@ var adminRouter = require('./routes/admin');
 var userProfileRouter = require('./routes/user-profile');
 var faqsRouter = require('./routes/faqs');
 var loginRouter = require('./routes/login');
+var productInfoRouter = require('./routes/product-info');
 const sequelize = require('./db');
 
 var app = express();
@@ -62,6 +63,7 @@ app.use('/admin', adminRouter);
 app.use('/user-profile', userProfileRouter);
 app.use('/faqs', faqsRouter);
 app.use('/login', loginRouter);
+app.use('/product-info', productInfoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
