@@ -42,7 +42,7 @@
 @media only screen and (max-width:990px){.product-grid{margin-bottom:30px}}
     </style>
 <!------ Include the above in your HEAD tag ---------->
-    <title>Login</title>
+    <title>Products</title>
 </head>
 <body>
 <header>
@@ -62,16 +62,16 @@
                         <img class="pic-2" src="/images/<%=product.imageUrl%>2.jpeg" style="width: 250px; height: 350px;">
                     </a>
                     <ul class="social" style="display: flex;">
-                        <form action="/product-info/" method="POST">
-                            <input type="hidden" name="productId" value="<%=product.productId%>">
-                            <li><a href="/contact-us" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                        </form>
+                        <form id="productInfoForm_<%= product.productId %>" action="/product-info" method="POST">
+                            <input type="hidden" name="productId" value="<%= product.productId %>">
+                            <li><a href="#" onclick="document.getElementById('productInfoForm_<%= product.productId %>').submit();" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                          </form>
                         <form action="/contact-us" method="get">
                             <li><a href="/contact-us" data-tip="Contact Us"><i class="fa-solid fa-clipboard-question"></i></a></li>
                         </form>
-                        <form id="addToCartForm" action="/products/addtocart" method="POST">
+                        <form id="addToCartForm_<%= product.productId %>" action="/products/addtocart" method="POST">
                             <input type="hidden" name="productId" value="<%=product.productId%>">
-                            <li><a href="#" onclick="document.getElementById('addToCartForm').submit();" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="#" onclick="document.getElementById('addToCartForm_<%= product.productId %>').submit();" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                         </form>
                     </ul>
                     <span class="product-new-label">Sale</span>
