@@ -1,4 +1,16 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/5a5b4e639f.js" crossorigin="anonymous"></script>
+    <style>
 /* BASIC */
 html {
   background-color: white;
@@ -14,16 +26,6 @@ a {
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
-}
-
-h2 {
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  display:inline-block;
-  margin: 40px 8px 10px 8px; 
-  color: #cccccc;
 }
 
 
@@ -62,20 +64,6 @@ h2 {
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
 }
-
-
-
-/* TABS */
-
-h2.inactive {
-  color: #cccccc;
-}
-
-h2.active {
-  color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
-}
-
 
 
 /* FORM TYPOGRAPHY*/
@@ -261,6 +249,16 @@ input[type=text]:placeholder {
 }
 </style>
 
+<!------ Include the above in your HEAD tag ---------->
+
+
+<body>
+<header>
+  <%- include('./header.ejs') %>.
+</header>
+
+<main>
+
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
@@ -271,16 +269,25 @@ input[type=text]:placeholder {
     </div>
 
     <!-- Login Form -->
-    <form method="post" action="/home">
+    <form action="./login" method="POST">
       <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
       <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="submit" action="./login" class="fadeIn fourth" value="Log In">
     </form>
 
     <!-- Make an account Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">New User? Click Here!</a>
+      <a class="underlineHover" href="/signup">New User? Click Here!</a>
     </div>
 
   </div>
 </div>
+  
+</main>
+
+<footer>
+  <%- include('./footer.ejs') %>.
+</footer>
+
+</body>
+</html>
