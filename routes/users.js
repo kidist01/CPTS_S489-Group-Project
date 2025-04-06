@@ -8,7 +8,7 @@ const session = require('express-session');
 router.get('/', async function(req, res, next) {
   let cartItems;
     let cartSize;
-    if(session.user){
+    if(req.session.user){
         cartItems = await Cart.findAll({
           userId: session.user.userId
       })
@@ -27,7 +27,7 @@ router.post('/login', async function(req, res, next) {
 
     let cartItems;
     let cartSize;
-    if(session.user){
+    if(req.session.user){
         cartItems = await Cart.findAll({
           userId: session.user.userId
       })
