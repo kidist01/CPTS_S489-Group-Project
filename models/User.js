@@ -1,7 +1,6 @@
 const sequelize = require('../db');
 const {Model, DataTypes} = require('sequelize');
 const Order = require('./Order.js');
-const Cart = require('./Cart.js');
 
 class User extends Model {
     static async findUser(username, password){
@@ -72,7 +71,5 @@ User.init({
     modelName: 'User'
 })
 
-User.hasOne(Cart, { foreignKey: 'userId' }); // User has one Profile
-Cart.belongsTo(User, { foreignKey: 'userId' });
 
 module.exports = User

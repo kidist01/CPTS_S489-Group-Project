@@ -8,14 +8,20 @@ const session = require('express-session');
 router.get('/', async (req, res) => {
     let cartItems;
     let cartSize;
+    console.log(session.user)
     if(session.user){
+        console.log(session.user);
         cartItems = await Cart.findAll({
-          userId: session.user.userId
+          where: {userId: session.user.userId},
+          include: ['Product']
       })
+    }
+    else{
+      res.redirect('/login')
     }
   
     cartSize = cartItems ? cartItems.length : 0;
-  res.render('cart', {cartSize});
+  res.render('cart', {cartSize, cartItems});
 });
 
 
