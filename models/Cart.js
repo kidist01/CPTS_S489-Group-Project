@@ -1,5 +1,7 @@
 const sequelize = require('../db');
 const {Model, DataTypes} = require('sequelize');
+const Product = require('./Product.js');
+const User = require('./User.js');
 
 class Cart extends Model {
 
@@ -35,6 +37,11 @@ Cart.init({
         }
     ]
 });
+
+
+Cart.belongsTo(Product, { foreignKey: 'productId' });
+Cart.belongsTo(User, { foreignKey: 'userId' });
+User.hasOne(Cart, { foreignKey: 'userId' }); // User has one Profile
 
 
 module.exports = Cart
