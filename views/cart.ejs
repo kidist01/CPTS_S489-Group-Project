@@ -53,7 +53,13 @@
                       <h6><strong><%= cartItem.Product.price%> <span class="text-muted">x</span></strong></h6>
                     </div>
                     <div class="col-xs-4">
-                      <h6 type="text" class="text-left" ><%= cartItem.quantity%></h6>
+                      <form id="quantity_button" action="/cart/changeQty" method="POST">
+                        <input type="hidden" name="productId" value="<%= cartItem.productId%>">
+                        <input type="text" name="quantity" class="text-right input-form" value="<%= cartItem.quantity%>" style="width: 4.8em">
+                        <button type="submit" class="btn">
+                          Update
+                        </button>
+                      </form>
                     </div>
                     <div class="col-xs-2">
                       <form id="delete_button" action="/cart/deleteItem" method="POST">
