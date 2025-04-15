@@ -28,29 +28,24 @@ router.get('/', async (req, res) => {
 router.post('/addtocart', isLoggedIn ,  async (req, res) => {
   let productId = req.body.productId;
 
-  let product = await Product.findOne({
-    productId: productId
-  })
-
-  await Cart.create (
-    {
-      productId: productId,
-      userId: session.user.userId
-    }
-  );
-
-  let cartItems = await Cart.findAll({
-    userId: session.user.userId
-  })
-
-  let cartSize = cartItems.length;
-
-  let products = await Product.findAll({
-  });
-
-  console.log(cartSize);
-
-  res.render('products', { products, cartSize });
+  try {
+    let product = await Product.findOne({
+      where: { productId}
+    })
+    await Cart.create (
+      {
+        productId: productId,
+        userId: session.user.userId
+      }
+    );
+    
+  } catch (error) {
+    console.error('Error in POST /products/addtocart:', error);
+    res.status(500).send('Server Error');
+    
+  }
+  res.redirect('/products');
+  //res.render('products', { products, cartSize });
 });
 
 function isLoggedIn(req, res, next) {

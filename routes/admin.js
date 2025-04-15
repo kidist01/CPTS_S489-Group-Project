@@ -3,8 +3,10 @@ var router = express.Router();
 const User = require('../models/User.js');
 const Cart = require('../models/Cart.js');
 const Product = require('../models/Product.js');
+const OrderItem = require('../models/OrderItem.js')
 console.log('PRODUCT MODEL:', Product);
 const session = require('express-session');
+const Order = require('../models/Order.js');
 
 /* GET home page. */
 router.get('/', async (req, res) => {
@@ -22,24 +24,6 @@ router.get('/', async (req, res) => {
   const products = await Product.findAll();
   // console.log(products)
 
-  const dummyProducts = [
-    {
-      name: 'Dog Food',
-      description: 'High quality dog food',
-      price: 29.99,
-      stockNumber: 100,
-      imageUrl: 'https://example.com/dog-food.jpg',
-      category: 'Food'
-    },
-    {
-      name: 'Cat Toy',
-      description: 'Interactive cat toy',
-      price: 9.99,
-      stockNumber: 50,
-      imageUrl: 'https://example.com/cat-toy.jpg',
-      category: 'Toys'
-    }
-  ];
   cartSize = cartItems ? cartItems.length : 0;
 
   res.render('admin', {cartSize, products });
@@ -67,6 +51,40 @@ router.post('/itemCreate', async function(req, res){
   }
 }
 ); 
+
+router.post('/itemDelete', async function(req, res){
+  console.log(req.body);
+  const { productId } = req.body;
+  try{
+    await Cart.destroy({ where: { productId } });
+    await Product.destroy({where: { productId }});
+    res.redirect('/admin');
+  }
+  catch(error){
+    console.error('Error deleting product:', error);
+    res.status(500).json({ error: 'Failed to delete product' });
+  }
+});
+
+router.post('/itemUpdate', async function(req,res){
+  console.log(req.body);
+  const { productId, price, stockNumber, description } = req.body;
+  try {
+    await Product.update(
+      {
+        price: parseFloat(price),
+        stockNumber: parseInt(stockNumber),
+        description: description
+      },
+      { where: { productId } }
+    );
+    res.redirect('/admin');
+  }
+  catch(error){
+    console.log('Error updating product', error);
+    res.status(500).json({ error: 'Failed to update product' });
+  }
+});
 
 
 module.exports = router;

@@ -26,10 +26,11 @@ router.post('/', async (req, res) => {
 
     let cartSize = 0;
 
-    if (req.session && req.session.user) {
-      const cartItems = await Cart.findAll({
-        where: { userId: req.session.user.userId }
-      });
+    if(session.user){
+      cartItems = await Cart.findAll({
+        userId: session.user.userId
+      })
+  
       cartSize = cartItems.length;
     }
 
@@ -42,6 +43,35 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.post('/addToCart', isLoggedIn ,  async (req, res) => {
+  let productId = req.body.productId;
 
+  try {
+    let product = await Product.findOne({
+      where: { productId}
+    })
+    await Cart.create (
+      {
+        productId: productId,
+        userId: session.user.userId
+      }
+    );
+    
+  } catch (error) {
+    console.error('Error in POST /products/addtocart:', error);
+    res.status(500).send('Server Error');
+    
+  }
+  res.redirect('/');
+  //res.render('product-info', { products, cartSize });
+});
+
+function isLoggedIn(req, res, next) {
+  if (session.user) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+}
 
 module.exports = router;
