@@ -63,8 +63,6 @@ router.post('/addtocart', isLoggedIn ,  async (req, res) => {
     where: { productId: productId, userId: session.user.userId}
   });
 
-  console.log(previousCartItems)
-
   if(previousCartItems != null){
     let prevQuantity = Number(previousCartItems.quantity)
     let totalQuantity = prevQuantity + 1;
@@ -89,8 +87,6 @@ router.post('/addtocart', isLoggedIn ,  async (req, res) => {
 
   let products = await Product.findAll({
   });
-
-  console.log(cartSize);
 
   res.render('index', { products, cartSize });
 });

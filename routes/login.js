@@ -22,7 +22,6 @@ router.post('/', async (req, res) => {
     const user = await User.findUser(username, password);
     if (user !== null) {
       session.user = user;
-      console.log(session.user)
       res.redirect("/?msg=LogedIn");
     } else {
       res.redirect("login?msg=Invalid+username+or+password");

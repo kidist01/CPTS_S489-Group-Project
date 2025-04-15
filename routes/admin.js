@@ -22,7 +22,6 @@ router.get('/', isAdmin, async (req, res) => {
   //   const products = await Products.findAll();
   // }
   const products = await Product.findAll();
-  // console.log(products)
 
   cartSize = cartItems ? cartItems.length : 0;
 
@@ -38,7 +37,6 @@ function isAdmin(req, res, next) {
 }
 
 router.post('/itemCreate', async function(req, res){
-  console.log(req.body);
   const { name, description, price, stockNumber, imageUrl, category } = req.body;
   let product;
   try{
@@ -61,7 +59,6 @@ router.post('/itemCreate', async function(req, res){
 ); 
 
 router.post('/itemDelete', async function(req, res){
-  console.log(req.body);
   const { productId } = req.body;
   try{
     await Cart.destroy({ where: { productId } });
@@ -75,7 +72,6 @@ router.post('/itemDelete', async function(req, res){
 });
 
 router.post('/itemUpdate', async function(req,res){
-  console.log(req.body);
   const { productId, price, stockNumber, description } = req.body;
   try {
     await Product.update(

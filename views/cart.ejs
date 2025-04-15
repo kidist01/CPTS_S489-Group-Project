@@ -86,9 +86,9 @@
                 <h4 class="text-right">Total <strong>$<%= cartTotal%></strong></h4>
               </div>
               <div class="col-xs-3">
-                <button type="button"  style="background-color: #ffe11b; color: black;" class="btn btn-success btn-block">
-                  Checkout
-                </button>
+                <form id="order_button" action="/order" method="get">
+                  <a href="./order" style="background-color: #ffe11b; color: black;" class="btn btn-success btn-block">Checkout</a>
+                </form>
               </div>
             </div>
           </div>

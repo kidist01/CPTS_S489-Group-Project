@@ -4,7 +4,6 @@ const User = require("../models/User");
 
 // GET /signup (shows the form)
 router.get("/", (req, res) => {
-  console.log("GET /signup route hit");
   res.render("signup", { msg: req.query.msg });
 });
 

@@ -6,8 +6,6 @@ const Cart = require('../models/Cart.js');
 const session = require('express-session');
 
 router.use((req, res, next) => {
-  console.log('HIT product-info router');
-  console.log('req.body:', req.body)
   next();
 });
 
@@ -16,13 +14,10 @@ router.use((req, res, next) => {
 router.post('/', async (req, res) => {
   try {
     const { productId } = req.body;
-    console.log('productId:', productId);
 
     const product = await Product.findOne({
       where: { productId }
     });
-
-    console.log('products:', product);
 
     let cartSize = 0;
 
@@ -34,7 +29,6 @@ router.post('/', async (req, res) => {
       cartSize = cartItems.length;
     }
 
-    console.log('Rendering product-info page...');
     res.render('product-info', { product, cartSize });
 
   } catch (err) {
@@ -48,14 +42,11 @@ router.post('/addToCart', isLoggedIn ,  async (req, res) => {
   let quantity = 5
   quantity = req.body.quantity;
 
-  console.log("Quantity", quantity);
-
   try {
     let product = await Product.findOne({
       where: { productId}
     });
 
-    console.log("SESSION", session?.user?.userId);
     let previousCartItems = await Cart.findOne({
       where: { productId: productId, userId: session.user.userId}
     });
