@@ -29,15 +29,33 @@ router.post('/addtocart', isLoggedIn ,  async (req, res) => {
   let productId = req.body.productId;
 
   try {
+    console.log(productId);
+    console.log(session.user.userId)
     let product = await Product.findOne({
       where: { productId}
     })
-    await Cart.create (
-      {
-        productId: productId,
-        userId: session.user.userId
-      }
-    );
+    
+    let previousCartItems = await Cart.findOne({
+      where: { productId: productId, userId: session.user.userId}
+    });
+
+    console.log(previousCartItems)
+
+    if(previousCartItems != null){
+      let prevQuantity = Number(previousCartItems.quantity)
+      let totalQuantity = prevQuantity + 1;
+
+      await Cart.update({ quantity: totalQuantity},
+        {where: { productId: productId, userId: session.user.userId}}
+      );
+
+    } else {
+      await Cart.create (
+        {
+          productId: productId,
+          userId: session.user.userId
+        });
+    }
     
   } catch (error) {
     console.error('Error in POST /products/addtocart:', error);
