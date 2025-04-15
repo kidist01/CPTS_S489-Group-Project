@@ -53,12 +53,15 @@
                       <h6><strong><%= cartItem.Product.price%> <span class="text-muted">x</span></strong></h6>
                     </div>
                     <div class="col-xs-4">
-                      <input type="text" class="form-control input-sm" value="<%= cartItem.quantity%>">
+                      <h6 type="text" class="text-left" ><%= cartItem.quantity%></h6>
                     </div>
                     <div class="col-xs-2">
-                      <button type="button" class="btn btn-link btn-xs">
-                        <span class="glyphicon glyphicon-trash"> </span>
-                      </button>
+                      <form id="delete_button" action="/cart/deleteItem" method="POST">
+                        <input type="hidden" name="productId" value="<%= cartItem.productId%>">
+                        <button type="submit" class="btn btn-link btn-xs">
+                          <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -71,18 +74,6 @@
               </div>
             <%}%>
           </div>
-          <div class="row">
-						<div class="text-center">
-							<div class="col-xs-9">
-								<h6 class="text-right">Added items?</h6>
-							</div>
-							<div class="col-xs-3">
-								<button type="button" class="btn btn-default btn-sm btn-block" style="width: 12em;">
-									Update cart
-								</button>
-							</div>
-						</div>
-					</div>
           <div class="panel-footer">
             <div class="row text-center">
               <div class="col-xs-9">

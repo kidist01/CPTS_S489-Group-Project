@@ -24,5 +24,29 @@ router.get('/', async (req, res) => {
   res.render('cart', {cartSize, cartItems});
 });
 
+router.post('/deleteItem', async (req, res) =>{
+  let Id = req.body.productId;
+  let itemToDelete = await Cart.findAll({
+    where: {
+      userId: session.user.userId,
+      productId: Id
+    }
+  })
+  if(itemToDelete){
+    await Cart.destroy({
+        where: {
+          userId: session.user.userId,
+          productId: Id
+        }
+      }
+    )
+  }
+  else{
+    console.log("Error: Item not found!!")
+  }
+  console.log("It worked?")
+  res.redirect('/cart');
+});
+
 
 module.exports = router;
