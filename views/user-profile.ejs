@@ -113,8 +113,10 @@ img{
               <h5 class="mb-4">Recent Orders</h5>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex flex-column align-items-start">
-                  <span>Purina Dog Food</span>
-                  <img src="/images/PurinaDogFood.jpeg" alt="Purina Dog Food" class="img-fluid mt-2">
+                <% for(let orderItem of recentOrder.OrderItems) {%>  
+                  <span><%= orderItem.Product.name %></span>
+                  <img src="/images/<%= orderItem.Product.imageUrl %>.jpeg" alt="Purina Dog Food" class="img-fluid mt-2">
+                <%}%>
                 </li>
                 
               </ul>

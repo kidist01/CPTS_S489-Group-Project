@@ -4,12 +4,39 @@ const User = require('../models/User.js');
 const Product = require('../models/Product.js');
 const Cart = require('../models/Cart.js');
 const session = require('express-session');
+const { Op } = require('sequelize');
 
 /* GET home page. */
 router.get('/', async (req, res) => {
-  let products = await Product.findAll({
+  const searchString = req.query.searchString;
+  let products
+
+  console.log(searchString);
+  
+  if(searchString != null){
+     products = await Product.findAll({
+      where: {
+        [Op.or]: 
+        [
+          {
+              name: searchString 
+          }, 
+          { 
+            description: searchString 
+          }, 
+          { 
+            category: searchString 
+          }
+        ]
+      }
+    });
+  } else{
+    products = await Product.findAll({
     
-  });;
+    });
+  }
+
+
 
   let cartSize = 0;
 

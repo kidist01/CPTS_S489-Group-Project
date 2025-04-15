@@ -216,12 +216,14 @@
                 <!-- <h1 style="margin:0px;"><span class="largenav">Pet Store</span></h1> -->
             </div>
             <div class="flipkart-navbar-search smallsearch col-sm-7 col-xs-11">
-                <div class="row">
-                    <input class="flipkart-navbar-input col-xs-11" type="" placeholder="Search for Products, Brands and more" name="">
-                    <button class="flipkart-navbar-button col-xs-1">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+              <form action="/products/" style="width: 90%;" >
+                <div style="display: flex;">
+                    <input style="width: 100%;" class="flipkart-navbar-input col-xs-11" type="text" placeholder="Search for Products, Brands and more" name="searchString">
+                      <button class="flipkart-navbar-button col-xs-1">
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                      </button>
                 </div>
+              </form>
             </div>
             <div class="cart largenav col" style="display: flex; gap: 0; padding: 0;">
                 <a href="./user-profile" class="col cart-button" style="flex: none; width: 120px">
