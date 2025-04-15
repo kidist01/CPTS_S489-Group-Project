@@ -23,30 +23,30 @@
                     <img style="max-width:100%;" src="/images/<%= product.imageUrl %>.jpeg" />
                 </div>
                 <div class="col-xs-5" style="border:0px solid gray">
-                    <!-- Datos del vendedor y titulo del producto -->
-                    <h3><%= product.name %></h3> 
-        
-                    <!-- Precios -->
-                    <h6 class="title-price"><small>Price</small></h6>
-                    <h3 style="margin-top:0px;"><%= product.price %></h3>
-        
-                    <div class="section" style="padding-bottom:20px;">
-                        <h6 class="title-attr"><small>Quantity</small></h6>                    
-                        <div>
-                            <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
-                            <input value="1" />
-                            <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
+                    <form id="addToCartForm_<%= product.productId %>" action="/product-info/addToCart" method="POST">
+                        <!-- Datos del vendedor y titulo del producto -->
+                        <h3><%= product.name %></h3> 
+            
+                        <!-- Precios -->
+                        <h6 class="title-price"><small>Price</small></h6>
+                        <h3 style="margin-top:0px;"><%= product.price %></h3>
+            
+                        <div class="section" style="padding-bottom:20px;">
+                            <h6 class="title-attr"><small>Quantity</small></h6>                    
+                            <div>
+                                <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
+                                <input id="quantity" name="quantity" value="1" />
+                                <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
+                            </div>
+                        </div>                
+            
+                        <!-- Botones de compra -->
+                        <div class="section" style="padding-bottom:20px;">
+                                <input type="hidden" name="productId" value="<%=product.productId%>">
+                                <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart</button>
+                            <!-- <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Agregar a lista de deseos</a></h6> -->
                         </div>
-                    </div>                
-        
-                    <!-- Botones de compra -->
-                    <div class="section" style="padding-bottom:20px;">
-                        <form id="addToCartForm_<%= product.productId %>" action="/product-info/addToCart" method="POST">
-                            <input type="hidden" name="productId" value="<%=product.productId%>">
-                            <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart</button>
-                        </form>
-                        <!-- <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Agregar a lista de deseos</a></h6> -->
-                    </div>                                        
+                    </form>                                        
                 </div>                              
         
                 <div class="col-xs-9">

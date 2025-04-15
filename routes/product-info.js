@@ -45,24 +45,43 @@ router.post('/', async (req, res) => {
 
 router.post('/addToCart', isLoggedIn ,  async (req, res) => {
   let productId = req.body.productId;
+  let quantity = 5
+  quantity = req.body.quantity;
+
+  console.log("Quantity", quantity);
 
   try {
     let product = await Product.findOne({
       where: { productId}
-    })
-    await Cart.create (
-      {
-        productId: productId,
-        userId: session.user.userId
-      }
-    );
-    
+    });
+
+    console.log("SESSION", session?.user?.userId);
+    let previousCartItems = await Cart.findOne({
+      where: { productId: productId, userId: session.user.userId}
+    });
+
+    if(previousCartItems != null){
+      let prevQuantity = Number(previousCartItems.quantity)
+      let newQuantity = Number(quantity);
+      let totalQuantity = Number(prevQuantity + newQuantity);
+
+      await Cart.update({ quantity: totalQuantity},
+        {where: { productId: productId, userId: session.user.userId}}
+      );
+
+    } else{
+      await Cart.create (
+        {
+          productId: productId,
+          userId: session.user.userId
+        });
+    }
   } catch (error) {
     console.error('Error in POST /products/addtocart:', error);
     res.status(500).send('Server Error');
     
   }
-  res.redirect('/');
+  res.redirect('/cart');
   //res.render('product-info', { products, cartSize });
 });
 
