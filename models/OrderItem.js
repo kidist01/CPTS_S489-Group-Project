@@ -1,6 +1,6 @@
 const sequelize = require('../db');
 const {Model, DataTypes} = require('sequelize');
-
+const Product = require('./Product');
 class OrderItem extends Model {
 
 }
@@ -17,8 +17,14 @@ OrderItem.init({
     },
     productId: {
         type: DataTypes.INTEGER,
-        allowNull: false
-    },
+        references: {
+          model: 'Products',
+          key: 'productId'
+        },
+        allowNull: false,
+        onDelete: 'CASCADE',
+    }
+    
 }, {
     sequelize,
     modelName: 'OrderItem'

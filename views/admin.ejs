@@ -22,8 +22,7 @@
 </header>
 
 <main>
-  <p>Admin</p>
-  <div class="container-lg">
+  <div class="container-lg" style="padding: 0 40px;"">
     <form method="post" action="/admin/itemCreate">
       <div class="form-group">
         <label for="formcontrolinput">Item Name</label>
@@ -55,19 +54,8 @@
     </form>
   </div>
 
-  <!-- <div class="container-lg">
-    <form method="post" action="/admin/itemDelete">
-      <div class="form-group">
-        <label for="formcontrolinput">Item ID</label>
-        <input required name="" type="text" class="form-control" id="formcontrolinput" placeholder="Item ID">
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Delete Item" class="btn btn-danger"></button>
-      </div>
-    </form>
-  </div> -->
 <section>
-  <div>
+  <div style="padding: 0 40px;"">
     <div class="p-lg-2 text-center bg-light">
       <h1 class="display-4">Inventory List</h1>
     </div>
@@ -84,11 +72,29 @@
       <tbody>
         <% products.forEach(item => { %>
           <tr>
-            <td><%= item.productId %></td>
-            <td><%= item.name %></td>
-            <td><%= item.description %></td>
-            <td>$<%= item.price %></td>
-            <td><%= item.stockNumber %></td>
+            <form method="post" action="/admin/itemUpdate">
+              <td><%= item.productId %></td>
+              <td><%= item.name %></td>
+              <td>
+                <input type="text" name="description" value="<%= item.description %>" class="form-control">
+              </td>
+              <td>
+                <input type="number" name="price" step="0.01" value="<%= item.price %>" class="form-control">
+              </td>
+              <td>
+                <input type="number" name="stockNumber" value="<%= item.stockNumber %>" class="form-control">
+              </td>
+              <td>
+                <input type="hidden" name="productId" value="<%= item.productId %>">
+                <button type="submit" class="btn btn-success">Save Changes</button>
+              </td>
+            </form>
+            <td>
+              <form method="post" action="/admin/itemDelete">
+                <input type="hidden" name="productId" value="<%= item.productId %>">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </td>
           </tr>
         <% }) %>
       </tbody>

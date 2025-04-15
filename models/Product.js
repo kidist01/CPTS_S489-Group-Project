@@ -47,7 +47,7 @@ Product.init({
     modelName: 'Product'
 })
 
-OrderItem.belongsTo(Product, { foreignKey: 'productId' }); // Each OrderItem belongs to one Product
-Product.hasMany(OrderItem, { foreignKey: 'productId' });
+OrderItem.belongsTo(Product, { foreignKey: 'productId', onDelete: 'CASCADE' }); // Each OrderItem belongs to one Product
+Product.hasMany(OrderItem, { foreignKey: 'productId', onDelete: 'CASCADE' });
 
 module.exports = Product
