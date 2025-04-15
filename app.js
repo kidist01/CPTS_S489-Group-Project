@@ -24,6 +24,7 @@ var faqsRouter = require('./routes/faqs');
 var loginRouter = require('./routes/login');
 var productInfoRouter = require('./routes/product-info');
 var signupRouter = require('./routes/signup');
+var orderRouter = require('./routes/order');
 const sequelize = require('./db');
 
 var app = express();
@@ -66,6 +67,7 @@ app.use('/faqs', faqsRouter);
 app.use('/login', loginRouter);
 app.use('/product-info', productInfoRouter);
 app.use('/signup', signupRouter);
+app.use('/order', orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -101,7 +103,7 @@ async function setup(params){
 
   //Create an Order for a user
   const order1 = await Order.create({orderId: 1, userId:1, orderDate: "2025-3-25", shippingAddress: "2394 Northwest Street", shippingCity: "Prosser", shippingState: "Wa", shippingZip: "9232", totalPrice: 59.99});
-  const orderItem1 = await OrderItem.create({id:1, orderId: 1, productId: 1});
+  const orderItem1 = await OrderItem.create({orderId: 1, productId: 1});
 
 }
 

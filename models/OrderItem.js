@@ -6,11 +6,6 @@ class OrderItem extends Model {
 }
 
 OrderItem.init({
-    id:{
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        allowNull: false
-    },
     orderId: {
         type: DataTypes.INTEGER,
         allowNull: false
