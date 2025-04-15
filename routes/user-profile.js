@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 const User = require('../models/User.js');
 const Cart = require('../models/Cart.js');
+const Product = require('../models/Product.js');
+const Order = require('../models/Order.js');
+const OrderItem = require('../models/OrderItem.js');
 const session = require('express-session');
 
 // Profile Page Route
@@ -29,7 +32,18 @@ router.get('/', isLoggedIn, async (req, res) => {
       return res.redirect("/login?msg=User+not+found");
     }
 
-    res.render('user-profile', { cartSize, user });
+    let recentOrder = await Order.findOne({
+      where: {userId: session.user.userId},
+      include: [
+        {
+          model: OrderItem,
+          include: [Product]
+        }
+      ],    
+      order: [['orderDate', 'DESC']] 
+    });
+
+    res.render('user-profile', { cartSize, user, recentOrder });
   } catch (err) {
     console.error("Error loading profile:", err);
     res.status(500).send("Server error");
