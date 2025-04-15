@@ -44,9 +44,34 @@ router.post('/deleteItem', async (req, res) =>{
   else{
     console.log("Error: Item not found!!")
   }
-  console.log("It worked?")
   res.redirect('/cart');
 });
 
+router.post('/changeQty', async (req, res) =>{
+  let quant = req.body.quantity;
+  console.log(quant)
+  let Id = req.body.productId;
+  let itemToChange = await Cart.findAll({
+    where: {
+      userId: session.user.userId,
+      productId: Id
+    }
+  })
+  if(itemToChange){
+    await Cart.update({
+      quantity: quant
+    }, 
+    {
+      where: {
+        userId: session.user.userId,
+        productId: Id
+      } 
+    });
+  }
+  else{
+    console.log("Error: Item not found!!")
+  }
+  res.redirect('/cart');
+});
 
 module.exports = router;
