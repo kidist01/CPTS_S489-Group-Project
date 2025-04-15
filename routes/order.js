@@ -33,25 +33,10 @@ router.get('/', isLoggedIn, async (req, res) => {
     cartItems.forEach((x) => subTotal += x.Product.price * x.quantity)
   }
 
-  console.log("SubTotal", subTotal);
-
   res.render('order', {cartSize, cartItems, subTotal});
 });
 
 router.post('/submit', isLoggedIn, async (req, res) => {
-    console.log(req.body.country)
-    console.log(req.body.first_name)
-    console.log(req.body.last_name)
-    console.log(req.body.address)
-    console.log(req.body.city)
-    console.log(req.body.state)
-    console.log(req.body.zip_code)
-    console.log(req.body.phone_number)
-    console.log(req.body.email_address)
-    console.log(req.body.CreditCardType)
-    console.log(req.body.car_number)
-    console.log(req.body.car_code)
-
     let cartItems = await Cart.findAll({
         where: {userId: session.user.userId},
         include: ['Product']

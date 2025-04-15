@@ -29,8 +29,6 @@ router.post('/addtocart', isLoggedIn ,  async (req, res) => {
   let productId = req.body.productId;
 
   try {
-    console.log(productId);
-    console.log(session.user.userId)
     let product = await Product.findOne({
       where: { productId}
     })
@@ -38,8 +36,6 @@ router.post('/addtocart', isLoggedIn ,  async (req, res) => {
     let previousCartItems = await Cart.findOne({
       where: { productId: productId, userId: session.user.userId}
     });
-
-    console.log(previousCartItems)
 
     if(previousCartItems != null){
       let prevQuantity = Number(previousCartItems.quantity)
