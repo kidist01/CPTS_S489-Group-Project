@@ -17,7 +17,7 @@ img{
 }
 </style>
 <!------ Include the above in your HEAD tag ---------->
-    <title>Login</title>
+    <title>User Profile</title>
 </head>
 <body>
 <header>
@@ -30,77 +30,80 @@ img{
       <div class="row">
         <!-- Profile Info (Left Side) -->
         <div class="col-lg-8">
+          <form action="user-profile/updateUser" method="POST">
+            <input type="hidden" name="userId" value="<%= user.userId %>">
           <div class="card mb-4">
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h5 class="mb-0">Profile Information</h5>
-                <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="submit" class="btn btn-sm btn-outline-secondary" id="editSaveBtn">Edit</button>
               </div>
   
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Username</p>
+                  <label for="username" class="form-label">Username</label>
                 </div>
                 <div class="col-sm-9">
-                  <p id="username" class="text-muted mb-0"><%= user.username %></p>
+                  <input type="text" name="username" id="username" class="form-control" value="<%= user.username %>">
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Email</p>
+                  <label for="email" class="form-label">Email</label>
                 </div>
                 <div class="col-sm-9">
-                  <p id="email" class="text-muted mb-0"><%= user.email %></p>
+                  <input type="text" name="email" id="email" class="form-control" value="<%= user.email %>">
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Street</p>
+                  <label for="street" class="form-label">Street Address</label>
                 </div>
                 <div class="col-sm-9">
-                  <p id="street" class="text-muted mb-0"><%= user.street %></p>
+                  <input type="text" name="street" id="street" class="form-control" value="<%= user.street %>">
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">City</p>
+                  <label for="city" class="form-label">City</label>
                 </div>
                 <div class="col-sm-9">
-                  <p id="city" class="text-muted mb-0"><%= user.city %></p>
+                  <input type="text" name="city" id="city" class="form-control" value="<%= user.city %>">
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">State</p>
+                  <label for="state" class="form-label">State</label>
                 </div>
                 <div class="col-sm-9">
-                  <p id="state" class="text-muted mb-0"><%= user.state %></p>
+                  <input type="text" name="state" id="state" class="form-control" value="<%= user.state %>">
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">ZIP</p>
+                  <label for="zip" class="form-label">Zip Code</label>
                 </div>
                 <div class="col-sm-9">
-                  <p id="zip" class="text-muted mb-0"><%= user.zip %></p>
+                  <input type="text" name="zip" id="zip" class="form-control" value="<%= user.zip %>">
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Password</p>
+                  <label for="password" class="form-label">Password</label>
                 </div>
                 <div class="col-sm-9">
-                  <p id="password" class="text-muted mb-0">••••••••</p>
+                  <input type="password" name="password" id="password" class="form-control" value="<%= user.password %>">
                 </div>
               </div>
             </div>
           </div>
+        </form>
         </div>
   
         <!-- Recent Orders (Right Side) -->
@@ -136,7 +139,7 @@ img{
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Rward Points:</p>
+                  <p class="mb-0">Reward Points:</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0">105</p>
@@ -154,6 +157,25 @@ img{
 <footer>
   <%- include('./footer.ejs') %>.
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const inputs = document.querySelectorAll('.card-body input');
+    const button = document.getElementById('editSaveBtn');
+    let isChanged = false;
+
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        if (!isChanged) {
+          button.textContent = 'Save';
+          button.classList.remove('btn-outline-secondary');
+          button.classList.add('btn-outline-success');
+          isChanged = true;
+        }
+      });
+    });
+  });
+</script>
 
 </body>
 </html>

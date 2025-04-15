@@ -9,7 +9,7 @@ const session = require('express-session');
 const Order = require('../models/Order.js');
 
 /* GET home page. */
-router.get('/', async (req, res) => {
+router.get('/', isAdmin, async (req, res) => {
   let cartItems;
   let cartSize;
   if(session.user){
@@ -27,6 +27,14 @@ router.get('/', async (req, res) => {
 
   res.render('admin', {cartSize, products });
 });
+
+function isAdmin(req, res, next) {
+  if (session.user && session.user.isAdmin) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+}
 
 router.post('/itemCreate', async function(req, res){
   const { name, description, price, stockNumber, imageUrl, category } = req.body;

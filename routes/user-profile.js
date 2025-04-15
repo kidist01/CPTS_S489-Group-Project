@@ -50,6 +50,21 @@ router.get('/', isLoggedIn, async (req, res) => {
   }
 });
 
+router.post('/updateUser', async function(req, res){
+  console.log('updateUser req.body: ', req.body);
+  const { username, email, street, city, state, zip, password } = req.body;
+  try {
+    await User.update(
+      { username: username, email: email , street: street, city: city, state: state, zip: zip, password: password },
+      { where: { userId: session.user.userId } }
+    )
+    res.redirect('/user-profile');
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).json({ error: 'Failed to update user' });
+  }
+})
+
 function isLoggedIn(req, res, next) {
   if (session.user) {
     next();
